@@ -87,6 +87,7 @@ func createPost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Insert the new user into the MongoDB collection
+
 	result, err := database.Collection("posts").InsertOne(context.Background(), post)
 	if err != nil {
 		log.Println(err)

@@ -38,6 +38,16 @@ func GetDBClient() (*mongo.Client, error) {
 	return client, err
 }
 
+func SetupDbClient() (*mongo.Client, *mongo.Database, error) {
+	// Set up MongoDB connection
+	client, err = GetDBClient()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Access the "users" collection
+	return client, client.Database("users"), err
+}
+
 func DisconnectDB() {
 
 	// Disconnect from MongoDB when finished
